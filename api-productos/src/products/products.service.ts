@@ -20,18 +20,24 @@ export class ProductsService {
         return product;
     }
 
-    createProduct(){
-
+    async createProduct(createProductDTO:CreateProductDTO):Promise<Product>{
+        const product =  new this.productModel(createProductDTO);
+        return await product.save();
+       
     }
 
-    updateProduct(){
-
+    async deleteProduct(productID:string):Promise<Product>{
+        const deletedProduct = await this.productModel.findByIdAndDelete(productID);
+        return deletedProduct;
     }
 
-    deleteProduct(){
 
+    async updateProduct(productID:string, createProductDTO:CreateProductDTO):Promise<Product>{
+        const updatedProduct= await this.productModel.findByIdAndUpdate(productID,createProductDTO, {new:true});
+        return updatedProduct;
     }
 
+   
 
 
 }
