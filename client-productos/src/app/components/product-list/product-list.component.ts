@@ -20,7 +20,10 @@ export class ProductListComponent implements OnInit {
 
   getProducts():void{
     this.productService.getProducts().subscribe(
-      res => this.products = res,
+      (res: any) => {
+        console.log(res);
+        
+        this.products = Object.values(res.information)},
       
       error =>console.log(error)
     )

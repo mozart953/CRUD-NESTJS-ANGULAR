@@ -26,6 +26,7 @@ export class ProductsController {
     @Get('/')
     async getProducts(@Res() res){
         const obtainProducts = await this.productService.getProducts();
+        // return obtainProducts;
 
         return res.status(HttpStatus.OK).json(
             {

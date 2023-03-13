@@ -27,9 +27,10 @@ export class ProductFormComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     if(params){
       this.productService.getProduct(params.id).subscribe(
-        res=>{
+        (res)=>{
           console.log(res);
           this.product = res;
+          this.edit = true;
         }
       );
     }
@@ -44,6 +45,17 @@ export class ProductFormComponent implements OnInit {
         err => console.log(err)
       );
 
+  }
+
+  updateProduct(){
+    delete this.product.createdAt;
+    this.productService.updateProduct(this.product._id, this.product).subscribe(
+      res=>{
+        console.log(res);
+        this.router.navigate(['/products']);
+      },
+      err=> {console.log(err)}
+    );
   }
 
 

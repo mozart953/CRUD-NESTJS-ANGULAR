@@ -16,7 +16,7 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.BASE_URL}/products`);
   }
   getProduct(id:string):Observable<Product>{
-    return this.http.get<Product>(`${this.BASE_URL}/products${id}`);
+    return this.http.get<Product>(`${this.BASE_URL}/products/${id}`);
   }
   createProduct(product:Product):Observable<Product>{
     return this.http.post<Product>(`${this.BASE_URL}/products/create`, product);

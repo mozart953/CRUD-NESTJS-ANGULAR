@@ -15,7 +15,7 @@
           price: {{product.price}}
         </li>
         <li>
-          createdAt: {{product.createdAt}}
+          createdAt: {{product.createAt}}
         </li>
       </ul>
       <button (click)="deleteProduct(product._id)" class="btn btn-danger">
@@ -26,7 +26,7 @@
       </button>
     </div>
     <div class="col-md-4">
-      <img [src]="product.imageURL" class="card-img">
+      <img [src]="product.imageURL  ? product.imageURL : 'https://static.nationalgeographic.co.uk/files/styles/image_3200/public/hubblewebbpillarsofcreationcompare2.jpg?w=1600&h=1562'" class="card-img">
     </div>
   </div>
 </div>
